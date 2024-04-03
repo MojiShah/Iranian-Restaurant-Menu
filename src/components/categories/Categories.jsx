@@ -12,7 +12,10 @@ export default function Categories(props) {
                     <button key={category}
                         type="button"
                         className={category === mainCategory ? "filter-btn highlight" : "filter-btn"}
-                        onClick={() => setMainCategory(category)}
+                        onClick={() => {
+                            setMainCategory(category);
+                            props.filteredMenus(category);
+                        }}
                         >
                         {category}
                     </button>

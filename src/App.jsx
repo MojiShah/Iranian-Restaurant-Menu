@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
 import './App.css';
-import { foods } from './foodData';
-import Categories from './components/categories/Categories';
-import Menu from './components/menu/Menu';
-
-const allCategorize = ['all', ... new Set(foods.map(food => food.type))]
+import { Routes,Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Food from './components/menu/food/Food';
 
 
 function App() {
-  const [categories, setCategories] = useState(allCategorize);
-  const [allMenus, setAllMenus] = useState(foods);
+  // const [categories, setCategories] = useState(allCategorize);
+  // const [allMenus, setAllMenus] = useState(foods);
 
   // console.log(allMenus);
 
+  // const filteredMenus = cat =>{
+  //   if (cat === 'all' ){
+  //     setAllMenus(foods);
+  //     return
+  //   }
+
+  //   let filteredMenus = foods.filter(menu => menu.type === cat);
+  //   console.log('allMenus',allMenus);
+  //   setAllMenus(filteredMenus);
+  // }
+
   return (
-    <main>
-      <section className='menu section'>
-        <div className="title">
-          <h2>Our menu</h2>
-          <div className="underline"></div>
-          <Categories Categories={categories}/>
-          <Menu menus={allMenus}/>
-        </div>
-      </section>
-    </main>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/:id' element={<Food />} />
+    </Routes>
   )
 }
 
